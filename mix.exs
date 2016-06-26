@@ -18,9 +18,13 @@
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Writing, []},
-     applications: [:phoenix, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+     applications: applications(Mix.env)]
   end
+
+  defp applications(:dev), do: applications(:all) ++ [:remix]
+  defp applications(_all), do: [:phoenix, :cowboy, :logger,
+                                :gettext, :phoenix_ecto, :postgrex,
+                                :comeonin]
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
@@ -32,9 +36,13 @@
   defp deps do
     [{:phoenix, "~> 1.1.4"},
      {:postgrex, ">= 0.0.0"},
+     {:guardian, "~> 0.12.0"},
+     {:comeonin, "~> 2.4"},
      {:phoenix_ecto, "~> 2.0"},
      {:gettext, "~> 0.9"},
+     {:ja_serializer, "~> 0.8.1"},
      {:cors_plug, "~> 1.1"},
+     {:remix, "~> 0.0.1", only: :dev},
      {:cowboy, "~> 1.0"}]
   end
 

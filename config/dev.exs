@@ -29,3 +29,8 @@ config :writing, Writing.Repo,
   database: "writing_dev",
   hostname: "localhost",
   pool_size: 10
+
+# Configure remix auto reloading
+config :remix,
+  escript: true,
+  silent: true

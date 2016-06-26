@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+cd "$(dirname "$0")/.."
+
+createdb writing_dev
+createdb writing_test
+
+mix do ecto.create, ecto.migrate
+MIX_ENV=test mix do ecto.create, ecto.migrate
