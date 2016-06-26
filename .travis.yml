@@ -1,11 +1,17 @@
 language: elixir
 elixir:
-  - 1.2
+- 1.2
 otp_release:
-  - 18.2
+- 18.2
 sudo: false
 addons:
-  postgresql: '9.4' # Use postgres 9.4
+  postgresql: '9.4'
 before_script:
-# Create the test database
 - psql -c 'create database peepchat_test;' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: Gy/2Skjy9f+m7ZKs0JPPPmVTv8JbKcJHLeLPqcdQJ/dYO0Pt9Whij1MsNzhzEhWtAjQNbFOACEeUzfUTEjTWaR7qitM2NjlxRVz2o6UoNnXRbeC0VTnWH+lXz7AN/93FAwg7bLJ80WD4jK+2kWdXTPcrCM+SVMAMW9AeGMBNZemzQPrGNcCbrZOg/PqpFQQumzUocjRrnNMvjfb9rhL2Je5kursgjKupk6HH7Rm+m0w5depqSU0Fz+8En0OWUuJKcYoB4AqjCVUY8d7uVuxzFDoUoR3odbSPXmqkMAX7XoyhzEbHTqfq8EpuOg1yz4JB+a4EzRg6qipAVRN1dEnLQsF1iOwuS8vJTOoEpN5aaJyfqi6yevfP4moW1MvFUpBLhUfcHUgn+Y+KC5CQ2aUnBnJUh/sF+e6YKMS9Y6yPfb2AfbuhvAb6EqTwYSOW1s6NrSdityrTJHRFm7FZ6FzW3TYtorEeRmZ+o+FjyyT8ocWcV5mxiJyEXK3caHZ3+IuAiZ9ZSvNQ2qn7tD10fYZuYjhPdQZPAk66jXkr+WOXgiWyzhMjC77ZgxgBkWRRThRUG6Yl69OpgIOVrt/YyxhHPjpHTpxYuO6R4mUcJmjtQ8Ks6hsuktdbDXUsiCZ8KLXrGlx9lFhJRWbvGiJLWJ5fEVBvsmUQP/w1K+gk8guqTmk=
+  app: writing-api
+  on:
+    repo: jessedijkstra/writing-api
