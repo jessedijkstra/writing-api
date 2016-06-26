@@ -1,1 +1,1 @@
-web: elixir -S mix phoenix.server
+web: script/server

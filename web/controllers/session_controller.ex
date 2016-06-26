@@ -20,7 +20,7 @@ defmodule Writing.SessionController do
         Logger.info "User " <> username <> " just logged in"
         {:ok, jwt, _} = Guardian.encode_and_sign(user, :token)
         conn
-        |> json(%{access_token: jwt, uuid: user.uuid})
+        |> json(%{access_token: jwt, id: user.id})
       true ->
         Logger.warn "User " <> username <> " just failed to login"
         conn

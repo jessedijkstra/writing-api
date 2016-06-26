@@ -12,7 +12,7 @@ defmodule Writing.UserView do
   def render("user.json", %{user: user}) do
     %{
       "type": "user",
-      "uuid": user.uuid,
+      "id": user.id,
       "attributes": %{
         "email": user.email
       }

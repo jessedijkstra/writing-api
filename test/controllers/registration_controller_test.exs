@@ -19,7 +19,7 @@ defmodule RegistrationControllerTest do
         attributes: @valid_attrs
       }
     }
-    assert json_response(conn, 201)["data"]["uuid"]
+    assert json_response(conn, 201)["data"]["id"]
     assert Repo.get_by(User, %{email: @valid_attrs[:email]})
   end
 end

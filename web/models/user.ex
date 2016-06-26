@@ -1,7 +1,7 @@
 defmodule Writing.User do
   use Writing.Web, :model
 
-  @primary_key {:uuid, :binary_id, autogenerate: true}
+  @primary_key {:id, :binary_id, autogenerate: true}
 
   schema "users" do
     field :email, :string
@@ -28,12 +28,6 @@ defmodule Writing.User do
     |> validate_length(:password, min: 8)
     |> hash_password
     |> unique_constraint(:email)
-    |> add_uuid
-  end
-
-  defp add_uuid(%{valid?: false} = changeset), do: changeset
-  defp add_uuid(%{valid?: true} = changeset) do
-    Ecto.Changeset.put_change(changeset, :uuid, UUID.uuid4())
   end
 
   defp hash_password(%{valid?: false} = changeset), do: changeset

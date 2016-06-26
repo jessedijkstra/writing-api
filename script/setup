@@ -3,4 +3,6 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-mix deps.get
+script/bootstrap
+
+mix ecto.create

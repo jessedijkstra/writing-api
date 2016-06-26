@@ -3,7 +3,7 @@ defmodule Writing.Repo.Migrations.CreateUser do
 
   def up do
     create table(:users, primary_key: false) do
-      add :uuid, :uuid, primary_key: true
+      add :id, :uuid, primary_key: true
       add :email, :string
       add :password_hash, :string
 

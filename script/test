@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+cd "$(dirname "$0")/.."
+
+export MIX_ENV=test
+
+script/setup
+script/update
+
+mix test
