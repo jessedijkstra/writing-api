@@ -2,9 +2,9 @@ use Mix.Config
 
 config :writing, Writing.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "example.com", port: 80],
-  secret_key_base: System.get_env("SECRET_KEY_BASE"),
-  cache_static_manifest: "priv/static/manifest.json"
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  url: [host: "writing-api.herokuapp.com", port: 443],
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 config :writing, Writing.Repo,
   adapter: Ecto.Adapters.Postgres,
